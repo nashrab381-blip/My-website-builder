@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0b1118">
+<title>KARAN Code Runner</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">K</span><span>KARAN <b>Code Runner</b></span></div>
+  <div class="top-actions">
+    <button id="newProject">＋ New</button>
+    <button id="saveProject">💾 Save</button>
+    <button id="exportProject">⬇ Export</button>
+    <button id="run" class="run">▶ Run</button>
+  </div>
+</header>
+
+<nav class="mobile-nav">
+  <button class="navbtn active" data-panel="editor">⌨ Editor</button>
+  <button class="navbtn" data-panel="preview">👁 Preview</button>
+  <button class="navbtn" data-panel="files">📁 Files</button>
+  <button class="navbtn" data-panel="inspector">🔎 Inspect</button>
+</nav>
+
+<main class="app">
+<aside class="sidebar panel-files">
+  <div class="section-head"><span>PROJECT FILES</span></div>
+  <div class="create-strip">
+    <button id="addFile" class="create-main">＋ NEW FILE</button>
+    <button id="addFolder">＋ FOLDER</button>
+  </div>
+  <div class="quick-strip">
+    <button id="quickHtml">HTML</button><button id="quickCss">CSS</button><button id="quickJs">JS</button>
+  </div>
+  <div id="tree" class="tree"></div>
+  <div class="sidebar-bottom"><button id="searchBtn">⌕ Find / Replace</button><button id="settingsBtn">⚙ Settings</button></div>
+</aside>
+
+<section class="editor-panel panel-editor">
+  <div id="tabs" class="tabs"></div>
+  <div class="editor-toolbar">
+    <button id="toggleFind">⌕ Find</button><span id="language">HTML</span>
+    <div><button id="formatBtn">Format</button><button id="inspectCurrent">Inspect</button></div>
+  </div>
+  <div id="findbar" class="findbar hidden">
+    <input id="findInput" placeholder="Find"><input id="replaceInput" placeholder="Replace">
+    <button id="findNext">Next</button><button id="replaceOne">Replace</button><button id="replaceAll">All</button><button id="closeFind">×</button>
+  </div>
+  <div class="editor-shell">
+    <div id="numbers" class="numbers"></div>
+    <textarea id="editor" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+  </div>
+  <div class="status"><span id="statusFile">index.html</span><span id="statusInfo">Ln 1, Col 1</span></div>
+</section>
+
+<section class="preview-panel panel-preview">
+  <div class="preview-toolbar">
+    <div class="device-buttons">
+      <button data-device="desktop" class="device active">🖥 Desktop</button>
+      <button data-device="laptop" class="device">💻 Laptop</button>
+      <button data-device="tablet" class="device">▣ Tablet</button>
+      <button data-device="mobile" class="device">📱 Mobile</button>
+      <button data-device="mobile-landscape" class="device">↔ Mobile</button>
+    </div>
+    <div class="preview-actions"><button id="zoomOut">−</button><span id="zoomValue">100%</span><button id="zoomIn">＋</button><button id="refresh">↻</button><button id="popout">↗</button></div>
+  </div>
+  <div id="previewStage" class="preview-stage"><div id="deviceFrame" class="device-frame desktop"><iframe id="preview" sandbox="allow-scripts allow-forms allow-modals allow-popups" title="Live Preview"></iframe></div></div>
+  <div class="console"><div class="console-head"><span>OUTPUT</span><button id="clearConsole">Clear</button></div><pre id="consoleOutput">Ready.</pre></div>
+</section>
+
+<section class="inspector-panel panel-inspector">
+  <div class="inspector-head"><strong>CODE INSPECTOR</strong><button id="inspectAll">Analyze Project</button></div>
+  <div class="inspector-tabs">
+    <button class="inspect-tab active" data-inspect="overview">Overview</button>
+    <button class="inspect-tab" data-inspect="files">Files</button>
+    <button class="inspect-tab" data-inspect="links">Links</button>
+    <button class="inspect-tab" data-inspect="styles">Styles</button>
+    <button class="inspect-tab" data-inspect="issues">Issues</button>
+  </div>
+  <div id="inspectOutput" class="inspect-output"></div></div></section>
+</main>
+
+<dialog id="nameDialog">
+<form id="nameForm"><h3 id="dialogTitle">New File</h3><p id="dialogHint"></p><input id="nameInput" required placeholder="index.html"><div class="dialog-actions"><button type="button" id="cancelDialog">Cancel</button><button class="primary">Create</button></div></form>
+</dialog>
+
+<dialog id="settingsDialog">
+<form method="dialog" id="settingsForm"><h3>Editor Settings</h3>
+<label>Font size <input id="fontSize" type="range" min="12" max="24" value="15"></label>
+<label>Tab size <select id="tabSize"><option>2</option><option selected>4</option><option>8</option></select></label>
+<label><input id="wordWrap" type="checkbox"> Word wrap</label>
+<label><input id="autoRun" type="checkbox" checked> Auto preview</label>
+<div class="dialog-actions"><button class="primary">Done</button></div></form>
+</dialog>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
